@@ -1,3 +1,5 @@
+import { Timestamp } from "rxjs"
+
 export interface Paciente {
   nombre_archivo    : string
   sector            : number

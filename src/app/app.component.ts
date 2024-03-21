@@ -41,7 +41,7 @@ export class AppComponent {
       let file: any = this.processingQueue.shift();
       this.isProcessing = true
 
-      console.log(file.name);
+      // console.log(file.name);
 
 
       const fileReader = new FileReader();
@@ -221,13 +221,16 @@ export class AppComponent {
                 nuevoPaciente.telefono = cellValue;
                 break;
               case 15: // Si correlativo es 15, asignar el valor a la propiedad 'fecha_nacimiento'
-                let fechaLegible = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
-                // nuevoPaciente.fecha_nacimiento= fechaLegible.toLocaleDateString();
-                // console.log(fechaLegible.toLocaleDateString(), "Fecha legible 2"); // Imprime la fecha en formato legible
-                nuevoPaciente.fecha_nacimiento = cellValue;
+                if (cellValue !== '') {
+                  let fechaLegible = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                  nuevoPaciente.fecha_nacimiento= fechaLegible.toLocaleDateString();
+                }
                 break;
               case 18: // Si correlativo es 18, asignar el valor a la propiedad 'fecha_ingreso'
-                nuevoPaciente.fecha_ingreso = cellValue;
+                if (cellValue !== '') {
+                  let fechaLegible2= new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                  nuevoPaciente.fecha_ingreso = fechaLegible2.toLocaleDateString();
+                }
                 break;
 
             }
@@ -505,7 +508,7 @@ export class AppComponent {
 
         this.pacienteService.agregarPaciente(nuevoPaciente).subscribe(
           (response) => {
-            console.log('Paciente agregado correctamente:', response);
+            // console.log('Paciente agregado correctamente:', response);
 
             rangeData6.forEach((row: any, rowIndex: number) => {
 
@@ -583,17 +586,33 @@ export class AppComponent {
 
                   switch(columnIndex) {
                     case 0:
-                      nuevoRegistroMedico.fecha_control_medico = cellValue;
+                      if (cellValue !== '') {
+                        let fecha0 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_control_medico = fecha0.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_control_medico = cellValue;
                       break;
 
                     case 1:
-                      nuevoRegistroMedico.fecha_control_medico_abrev = cellValue;
+                      if (cellValue !== '') {
+                        let fecha1 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_control_medico_abrev = fecha1.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_control_medico_abrev = cellValue;
                       break;
                     case 2:
-                      nuevoRegistroMedico.fecha_control_enf = cellValue;
+                      if (cellValue !== '') {
+                        let fecha2 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_control_enf = fecha2.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_control_enf = cellValue;
                       break;
                     case 3:
-                      nuevoRegistroMedico.fecha_control_nutri = cellValue;
+                      if (cellValue !== '') {
+                        let fecha3 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_control_nutri = fecha3.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_control_nutri = cellValue;
                       break;
                     case 4:
                       nuevoRegistroMedico.protocolo_hearts = cellValue;
@@ -641,7 +660,11 @@ export class AppComponent {
                       nuevoRegistroMedico.acv = cellValue;
                       break;
                     case 19:
-                      nuevoRegistroMedico.fecha_examen_lab = cellValue;
+                      if (cellValue !== '') {
+                        let fecha4 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_examen_lab = fecha4.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_examen_lab = cellValue;
                       break;
                     case 20:
                       nuevoRegistroMedico.glicemia = cellValue;
@@ -659,7 +682,11 @@ export class AppComponent {
                       nuevoRegistroMedico.ldl = cellValue;
                       break;
                     case 25:
-                      nuevoRegistroMedico.fecha_crea = cellValue;
+                      if (cellValue !== '') {
+                        let fecha5 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_crea = fecha5.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_crea = cellValue;
                       break;
                     case 26:
                       nuevoRegistroMedico.crea = cellValue;
@@ -668,7 +695,11 @@ export class AppComponent {
                       nuevoRegistroMedico.vfg = cellValue;
                       break;
                     case 28:
-                      nuevoRegistroMedico.fecha_microalb_rac = cellValue;
+                      if (cellValue !== '') {
+                        let fecha6 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_microalb_rac = fecha6.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_microalb_rac = cellValue;
                       break;
                     case 29:
                       nuevoRegistroMedico.micro_alb = cellValue;
@@ -677,13 +708,21 @@ export class AppComponent {
                       nuevoRegistroMedico.rac = cellValue;
                       break;
                     case 31:
-                      nuevoRegistroMedico.fecha_hba1c = cellValue;
+                      if (cellValue !== '') {
+                        let fecha7 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_hba1c = fecha7.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_hba1c = cellValue;
                       break;
                     case 32:
                       nuevoRegistroMedico.valor_hba1c = cellValue;
                       break;
                     case 33:
-                      nuevoRegistroMedico.fecha_ptgo = cellValue;
+                      if (cellValue !== '') {
+                        let fecha8 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_ptgo = fecha8.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_ptgo = cellValue;
                       break;
                     case 34:
                       nuevoRegistroMedico.ptgo_ayunas = cellValue;
@@ -692,25 +731,45 @@ export class AppComponent {
                       nuevoRegistroMedico.ptgo_post_carga = cellValue;
                       break;
                     case 36:
-                      nuevoRegistroMedico.fecha_tsh = cellValue;
+                      if (cellValue !== '') {
+                        let fecha9 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_tsh = fecha9.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_tsh = cellValue;
                       break;
                     case 37:
                       nuevoRegistroMedico.valor_tsh = cellValue;
                       break;
                     case 38:
-                      nuevoRegistroMedico.fecha_ekg = cellValue;
+                      if (cellValue !== '') {
+                        let fecha10 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_ekg = fecha10.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_ekg = cellValue;
                       break;
                     case 39:
-                      nuevoRegistroMedico.fecha_pie_diabetico = cellValue;
+                      if (cellValue !== '') {
+                        let fecha11 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_pie_diabetico = fecha11.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_pie_diabetico = cellValue;
                       break;
                     case 40:
                       nuevoRegistroMedico.resultado_pie_diabetico = cellValue;
                       break;
                     case 41:
-                      nuevoRegistroMedico.fecha_podologia = cellValue;
+                      if (cellValue !== '') {
+                        let fecha12 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_podologia = fecha12.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_podologia = cellValue;
                       break;
                     case 42:
-                      nuevoRegistroMedico.fecha_f_ojo = cellValue;
+                      if (cellValue !== '') {
+                        let fecha13 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_f_ojo = fecha13.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_f_ojo = cellValue;
                       break;
                     case 43:
                       nuevoRegistroMedico.resultado_fo = cellValue;
@@ -734,10 +793,18 @@ export class AppComponent {
                       nuevoRegistroMedico.riesgo_cardiovascular = cellValue;
                       break;
                     case 50:
-                      nuevoRegistroMedico.fecha_rx_cadera = cellValue;
+                      if (cellValue !== '') {
+                        let fecha14 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_rx_cadera = fecha14.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_rx_cadera = cellValue;
                       break;
                     case 51:
-                      nuevoRegistroMedico.fecha_rx_rodilla = cellValue;
+                      if (cellValue !== '') {
+                        let fecha15 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.fecha_rx_rodilla = fecha15.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.fecha_rx_rodilla = cellValue;
                       break;
                     case 52:
                       nuevoRegistroMedico.nombre_medico = cellValue;
@@ -749,16 +816,32 @@ export class AppComponent {
                       nuevoRegistroMedico.nombre_nutricionista = cellValue;
                       break;
                     case 55:
-                      nuevoRegistroMedico.prox_control_medico = cellValue;
+                      if (cellValue !== '') {
+                        let fecha16 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.prox_control_medico = fecha16.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.prox_control_medico = cellValue;
                       break;
                     case 56:
-                      nuevoRegistroMedico.prox_control_medico_abreviado = cellValue;
+                      if (cellValue !== '') {
+                        let fecha17 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.prox_control_medico_abreviado = fecha17.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.prox_control_medico_abreviado = cellValue;
                       break;
                     case 57:
-                      nuevoRegistroMedico.prox_control_enf = cellValue;
+                      if (cellValue !== '') {
+                        let fecha18 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.prox_control_enf = fecha18.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.prox_control_enf = cellValue;
                       break;
                     case 58:
-                      nuevoRegistroMedico.prox_control_nutri = cellValue;
+                      if (cellValue !== '') {
+                        let fecha19 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
+                        nuevoRegistroMedico.prox_control_nutri = fecha19.toLocaleDateString();
+                      }
+                      // nuevoRegistroMedico.prox_control_nutri = cellValue;
                       break;
                     case 59:
                       nuevoRegistroMedico.observaciones = cellValue;
@@ -780,7 +863,7 @@ export class AppComponent {
                   nuevoRegistroMedico.fecha_control_enf !== '' ||
                   nuevoRegistroMedico.fecha_control_nutri !== '') {
 
-                console.log(nuevoRegistroMedico);
+                // console.log(nuevoRegistroMedico);
 
                 this.procesarRegistroMedico(nuevoRegistroMedico);
 
@@ -814,7 +897,7 @@ export class AppComponent {
   async procesarRegistroMedico(nuevoRegistroMedico: RegistroMedico) {
 
     const response2 = await this.pacienteService.agregarRegistrosMedicos(nuevoRegistroMedico).toPromise();
-    console.log('Registro Médico agregado correctamente:', response2);
+    // console.log('Registro Médico agregado correctamente:', response2);
 
   }
 
