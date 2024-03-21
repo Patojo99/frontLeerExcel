@@ -14,14 +14,12 @@ import { RegistroMedico } from './interfaces/registromedico';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-
-  contador: number = 1;
   title = 'leerExcel';
   datosPacientes: Paciente[] = [];
   files: File[] = [];
   processingQueue: File[] = [];
   isProcessing = false;
-  ejemplo = '';
+  contador: number = 1;
 
   constructor( private pacienteService: PacienteService) { }
 
@@ -238,276 +236,558 @@ export class AppComponent {
         });
 
         // console.log("Valores de rangeData6:", rangeData6);
-        rangeData6.forEach((row: any, rowIndex: number) => {
+        // rangeData6.forEach((row: any, rowIndex: number) => {
 
-          let nuevoRegistroMedico: RegistroMedico = {
-            fecha_control_medico: '',
-            fecha_control_medico_abrev: '',
-            fecha_control_enf: '',
-            fecha_control_nutri: '',
-            protocolo_hearts: '',
-            edad: '',
-            peso: '',
-            talla: '',
-            imc: '',
-            dg_nutricional: '',
-            cc: '',
-            presion_sistolica: '',
-            presion_diastolica: '',
-            fc: '',
-            sedentarismo: '',
-            tabaquismo: '',
-            amputacion_pie_diabetico: '',
-            iam: '',
-            acv: '',
-            fecha_examen_lab: '',
-            glicemia: '',
-            col_total: '',
-            trigli: '',
-            hdl: '',
-            ldl: '',
-            fecha_crea: '',
-            crea: '',
-            vfg: '',
-            fecha_microalb_rac: '',
-            micro_alb: '',
-            rac: '',
-            fecha_hba1c: '',
-            valor_hba1c: '',
-            fecha_ptgo: '',
-            ptgo_ayunas: '',
-            ptgo_post_carga: '',
-            fecha_tsh: '',
-            valor_tsh: '',
-            fecha_ekg: '',
-            fecha_pie_diabetico: '',
-            resultado_pie_diabetico: '',
-            fecha_podologia: '',
-            fecha_f_ojo: '',
-            resultado_fo: '',
-            aas: '',
-            atv: '',
-            ieca_ara2: '',
-            insulina: '',
-            erc: '',
-            riesgo_cardiovascular: '',
-            fecha_rx_cadera: '',
-            fecha_rx_rodilla: '',
-            nombre_medico: '',
-            nombre_enfermera: '',
-            nombre_nutricionista: '',
-            prox_control_medico: '',
-            prox_control_medico_abreviado: '',
-            prox_control_enf: '',
-            prox_control_nutri: '',
-            observaciones: ''
+        //   let nuevoRegistroMedico: RegistroMedico = {
+        //     fecha_control_medico: '',
+        //     fecha_control_medico_abrev: '',
+        //     fecha_control_enf: '',
+        //     fecha_control_nutri: '',
+        //     protocolo_hearts: '',
+        //     edad: '',
+        //     peso: '',
+        //     talla: '',
+        //     imc: '',
+        //     dg_nutricional: '',
+        //     cc: '',
+        //     presion_sistolica: '',
+        //     presion_diastolica: '',
+        //     fc: '',
+        //     sedentarismo: '',
+        //     tabaquismo: '',
+        //     amputacion_pie_diabetico: '',
+        //     iam: '',
+        //     acv: '',
+        //     fecha_examen_lab: '',
+        //     glicemia: '',
+        //     col_total: '',
+        //     trigli: '',
+        //     hdl: '',
+        //     ldl: '',
+        //     fecha_crea: '',
+        //     crea: '',
+        //     vfg: '',
+        //     fecha_microalb_rac: '',
+        //     micro_alb: '',
+        //     rac: '',
+        //     fecha_hba1c: '',
+        //     valor_hba1c: '',
+        //     fecha_ptgo: '',
+        //     ptgo_ayunas: '',
+        //     ptgo_post_carga: '',
+        //     fecha_tsh: '',
+        //     valor_tsh: '',
+        //     fecha_ekg: '',
+        //     fecha_pie_diabetico: '',
+        //     resultado_pie_diabetico: '',
+        //     fecha_podologia: '',
+        //     fecha_f_ojo: '',
+        //     resultado_fo: '',
+        //     aas: '',
+        //     atv: '',
+        //     ieca_ara2: '',
+        //     insulina: '',
+        //     erc: '',
+        //     riesgo_cardiovascular: '',
+        //     fecha_rx_cadera: '',
+        //     fecha_rx_rodilla: '',
+        //     nombre_medico: '',
+        //     nombre_enfermera: '',
+        //     nombre_nutricionista: '',
+        //     prox_control_medico: '',
+        //     prox_control_medico_abreviado: '',
+        //     prox_control_enf: '',
+        //     prox_control_nutri: '',
+        //     observaciones: ''
 
-          }
+        //   }
 
-          row.forEach((cellValue: any, columnIndex: number) => {
-            // if (rowIndex !== 0) {
+        //   row.forEach((cellValue: any, columnIndex: number) => {
+        //     // if (rowIndex !== 0) {
 
-              switch(columnIndex) {
-                case 0:
-                  nuevoRegistroMedico.fecha_control_medico = cellValue;
-                  break;
+        //       switch(columnIndex) {
+        //         case 0:
+        //           nuevoRegistroMedico.fecha_control_medico = cellValue;
+        //           break;
 
-                case 1:
-                  nuevoRegistroMedico.fecha_control_medico_abrev = cellValue;
-                  break;
-                case 2:
-                  nuevoRegistroMedico.fecha_control_enf = cellValue;
-                  break;
-                case 3:
-                  nuevoRegistroMedico.fecha_control_nutri = cellValue;
-                  break;
-                case 4:
-                  nuevoRegistroMedico.protocolo_hearts = cellValue;
-                  break;
-                case 5:
-                  nuevoRegistroMedico.edad = cellValue;
-                  break;
-                case 6:
-                  nuevoRegistroMedico.peso = cellValue;
-                  break;
-                case 7:
-                  nuevoRegistroMedico.talla = cellValue;
-                  break;
-                case 8:
-                  nuevoRegistroMedico.imc = cellValue;
-                  break;
-                case 9:
-                  nuevoRegistroMedico.dg_nutricional = cellValue;
-                  break;
-                case 10:
-                  nuevoRegistroMedico.cc = cellValue;
-                  break;
-                case 11:
-                  nuevoRegistroMedico.presion_sistolica = cellValue;
-                  break;
-                case 12:
-                  nuevoRegistroMedico.presion_diastolica = cellValue;
-                  break;
-                case 13:
-                  nuevoRegistroMedico.fc = cellValue;
-                  break;
-                case 14:
-                  nuevoRegistroMedico.sedentarismo = cellValue;
-                  break;
-                case 15:
-                  nuevoRegistroMedico.tabaquismo = cellValue;
-                  break;
-                case 16:
-                  nuevoRegistroMedico.amputacion_pie_diabetico = cellValue;
-                  break;
-                case 17:
-                  nuevoRegistroMedico.iam = cellValue;
-                  break;
-                case 18:
-                  nuevoRegistroMedico.acv = cellValue;
-                  break;
-                case 19:
-                  nuevoRegistroMedico.fecha_examen_lab = cellValue;
-                  break;
-                case 20:
-                  nuevoRegistroMedico.glicemia = cellValue;
-                  break;
-                case 21:
-                  nuevoRegistroMedico.col_total = cellValue;
-                  break;
-                case 22:
-                  nuevoRegistroMedico.trigli = cellValue;
-                  break;
-                case 23:
-                  nuevoRegistroMedico.hdl = cellValue;
-                  break;
-                case 24:
-                  nuevoRegistroMedico.ldl = cellValue;
-                  break;
-                case 25:
-                  nuevoRegistroMedico.fecha_crea = cellValue;
-                  break;
-                case 26:
-                  nuevoRegistroMedico.crea = cellValue;
-                  break;
-                case 27:
-                  nuevoRegistroMedico.vfg = cellValue;
-                  break;
-                case 28:
-                  nuevoRegistroMedico.fecha_microalb_rac = cellValue;
-                  break;
-                case 29:
-                  nuevoRegistroMedico.micro_alb = cellValue;
-                  break;
-                case 30:
-                  nuevoRegistroMedico.rac = cellValue;
-                  break;
-                case 31:
-                  nuevoRegistroMedico.fecha_hba1c = cellValue;
-                  break;
-                case 32:
-                  nuevoRegistroMedico.valor_hba1c = cellValue;
-                  break;
-                case 33:
-                  nuevoRegistroMedico.fecha_ptgo = cellValue;
-                  break;
-                case 34:
-                  nuevoRegistroMedico.ptgo_ayunas = cellValue;
-                  break;
-                case 35:
-                  nuevoRegistroMedico.ptgo_post_carga = cellValue;
-                  break;
-                case 36:
-                  nuevoRegistroMedico.fecha_tsh = cellValue;
-                  break;
-                case 37:
-                  nuevoRegistroMedico.valor_tsh = cellValue;
-                  break;
-                case 38:
-                  nuevoRegistroMedico.fecha_ekg = cellValue;
-                  break;
-                case 39:
-                  nuevoRegistroMedico.fecha_pie_diabetico = cellValue;
-                  break;
-                case 40:
-                  nuevoRegistroMedico.resultado_pie_diabetico = cellValue;
-                  break;
-                case 41:
-                  nuevoRegistroMedico.fecha_podologia = cellValue;
-                  break;
-                case 42:
-                  nuevoRegistroMedico.fecha_f_ojo = cellValue;
-                  break;
-                case 43:
-                  nuevoRegistroMedico.resultado_fo = cellValue;
-                  break;
-                case 44:
-                  nuevoRegistroMedico.aas = cellValue;
-                  break;
-                case 45:
-                  nuevoRegistroMedico.atv = cellValue;
-                  break;
-                case 46:
-                  nuevoRegistroMedico.ieca_ara2 = cellValue;
-                  break;
-                case 47:
-                  nuevoRegistroMedico.insulina = cellValue;
-                  break;
-                case 48:
-                  nuevoRegistroMedico.erc = cellValue;
-                  break;
-                case 49:
-                  nuevoRegistroMedico.riesgo_cardiovascular = cellValue;
-                  break;
-                case 50:
-                  nuevoRegistroMedico.fecha_rx_cadera = cellValue;
-                  break;
-                case 51:
-                  nuevoRegistroMedico.fecha_rx_rodilla = cellValue;
-                  break;
-                case 52:
-                  nuevoRegistroMedico.nombre_medico = cellValue;
-                  break;
-                case 53:
-                  nuevoRegistroMedico.nombre_enfermera = cellValue;
-                  break;
-                case 54:
-                  nuevoRegistroMedico.nombre_nutricionista = cellValue;
-                  break;
-                case 55:
-                  nuevoRegistroMedico.prox_control_medico = cellValue;
-                  break;
-                case 56:
-                  nuevoRegistroMedico.prox_control_medico_abreviado = cellValue;
-                  break;
-                case 57:
-                  nuevoRegistroMedico.prox_control_enf = cellValue;
-                  break;
-                case 58:
-                  nuevoRegistroMedico.prox_control_nutri = cellValue;
-                  break;
-                case 59:
-                  nuevoRegistroMedico.observaciones = cellValue;
-                  break;
-              }
+        //         case 1:
+        //           nuevoRegistroMedico.fecha_control_medico_abrev = cellValue;
+        //           break;
+        //         case 2:
+        //           nuevoRegistroMedico.fecha_control_enf = cellValue;
+        //           break;
+        //         case 3:
+        //           nuevoRegistroMedico.fecha_control_nutri = cellValue;
+        //           break;
+        //         case 4:
+        //           nuevoRegistroMedico.protocolo_hearts = cellValue;
+        //           break;
+        //         case 5:
+        //           nuevoRegistroMedico.edad = cellValue;
+        //           break;
+        //         case 6:
+        //           nuevoRegistroMedico.peso = cellValue;
+        //           break;
+        //         case 7:
+        //           nuevoRegistroMedico.talla = cellValue;
+        //           break;
+        //         case 8:
+        //           nuevoRegistroMedico.imc = cellValue;
+        //           break;
+        //         case 9:
+        //           nuevoRegistroMedico.dg_nutricional = cellValue;
+        //           break;
+        //         case 10:
+        //           nuevoRegistroMedico.cc = cellValue;
+        //           break;
+        //         case 11:
+        //           nuevoRegistroMedico.presion_sistolica = cellValue;
+        //           break;
+        //         case 12:
+        //           nuevoRegistroMedico.presion_diastolica = cellValue;
+        //           break;
+        //         case 13:
+        //           nuevoRegistroMedico.fc = cellValue;
+        //           break;
+        //         case 14:
+        //           nuevoRegistroMedico.sedentarismo = cellValue;
+        //           break;
+        //         case 15:
+        //           nuevoRegistroMedico.tabaquismo = cellValue;
+        //           break;
+        //         case 16:
+        //           nuevoRegistroMedico.amputacion_pie_diabetico = cellValue;
+        //           break;
+        //         case 17:
+        //           nuevoRegistroMedico.iam = cellValue;
+        //           break;
+        //         case 18:
+        //           nuevoRegistroMedico.acv = cellValue;
+        //           break;
+        //         case 19:
+        //           nuevoRegistroMedico.fecha_examen_lab = cellValue;
+        //           break;
+        //         case 20:
+        //           nuevoRegistroMedico.glicemia = cellValue;
+        //           break;
+        //         case 21:
+        //           nuevoRegistroMedico.col_total = cellValue;
+        //           break;
+        //         case 22:
+        //           nuevoRegistroMedico.trigli = cellValue;
+        //           break;
+        //         case 23:
+        //           nuevoRegistroMedico.hdl = cellValue;
+        //           break;
+        //         case 24:
+        //           nuevoRegistroMedico.ldl = cellValue;
+        //           break;
+        //         case 25:
+        //           nuevoRegistroMedico.fecha_crea = cellValue;
+        //           break;
+        //         case 26:
+        //           nuevoRegistroMedico.crea = cellValue;
+        //           break;
+        //         case 27:
+        //           nuevoRegistroMedico.vfg = cellValue;
+        //           break;
+        //         case 28:
+        //           nuevoRegistroMedico.fecha_microalb_rac = cellValue;
+        //           break;
+        //         case 29:
+        //           nuevoRegistroMedico.micro_alb = cellValue;
+        //           break;
+        //         case 30:
+        //           nuevoRegistroMedico.rac = cellValue;
+        //           break;
+        //         case 31:
+        //           nuevoRegistroMedico.fecha_hba1c = cellValue;
+        //           break;
+        //         case 32:
+        //           nuevoRegistroMedico.valor_hba1c = cellValue;
+        //           break;
+        //         case 33:
+        //           nuevoRegistroMedico.fecha_ptgo = cellValue;
+        //           break;
+        //         case 34:
+        //           nuevoRegistroMedico.ptgo_ayunas = cellValue;
+        //           break;
+        //         case 35:
+        //           nuevoRegistroMedico.ptgo_post_carga = cellValue;
+        //           break;
+        //         case 36:
+        //           nuevoRegistroMedico.fecha_tsh = cellValue;
+        //           break;
+        //         case 37:
+        //           nuevoRegistroMedico.valor_tsh = cellValue;
+        //           break;
+        //         case 38:
+        //           nuevoRegistroMedico.fecha_ekg = cellValue;
+        //           break;
+        //         case 39:
+        //           nuevoRegistroMedico.fecha_pie_diabetico = cellValue;
+        //           break;
+        //         case 40:
+        //           nuevoRegistroMedico.resultado_pie_diabetico = cellValue;
+        //           break;
+        //         case 41:
+        //           nuevoRegistroMedico.fecha_podologia = cellValue;
+        //           break;
+        //         case 42:
+        //           nuevoRegistroMedico.fecha_f_ojo = cellValue;
+        //           break;
+        //         case 43:
+        //           nuevoRegistroMedico.resultado_fo = cellValue;
+        //           break;
+        //         case 44:
+        //           nuevoRegistroMedico.aas = cellValue;
+        //           break;
+        //         case 45:
+        //           nuevoRegistroMedico.atv = cellValue;
+        //           break;
+        //         case 46:
+        //           nuevoRegistroMedico.ieca_ara2 = cellValue;
+        //           break;
+        //         case 47:
+        //           nuevoRegistroMedico.insulina = cellValue;
+        //           break;
+        //         case 48:
+        //           nuevoRegistroMedico.erc = cellValue;
+        //           break;
+        //         case 49:
+        //           nuevoRegistroMedico.riesgo_cardiovascular = cellValue;
+        //           break;
+        //         case 50:
+        //           nuevoRegistroMedico.fecha_rx_cadera = cellValue;
+        //           break;
+        //         case 51:
+        //           nuevoRegistroMedico.fecha_rx_rodilla = cellValue;
+        //           break;
+        //         case 52:
+        //           nuevoRegistroMedico.nombre_medico = cellValue;
+        //           break;
+        //         case 53:
+        //           nuevoRegistroMedico.nombre_enfermera = cellValue;
+        //           break;
+        //         case 54:
+        //           nuevoRegistroMedico.nombre_nutricionista = cellValue;
+        //           break;
+        //         case 55:
+        //           nuevoRegistroMedico.prox_control_medico = cellValue;
+        //           break;
+        //         case 56:
+        //           nuevoRegistroMedico.prox_control_medico_abreviado = cellValue;
+        //           break;
+        //         case 57:
+        //           nuevoRegistroMedico.prox_control_enf = cellValue;
+        //           break;
+        //         case 58:
+        //           nuevoRegistroMedico.prox_control_nutri = cellValue;
+        //           break;
+        //         case 59:
+        //           nuevoRegistroMedico.observaciones = cellValue;
+        //           break;
+        //       }
 
-              // console.log(`Valor en la fila ${rowIndex}, columna ${columnIndex}: ${cellValue}`);
+        //       // console.log(`Valor en la fila ${rowIndex}, columna ${columnIndex}: ${cellValue}`);
 
-            // }
-          });
+        //     // }
+        //   });
 
-          if (nuevoRegistroMedico.fecha_control_medico !== '' || nuevoRegistroMedico.fecha_control_medico_abrev !== '' || nuevoRegistroMedico.fecha_control_enf !== '' || nuevoRegistroMedico.fecha_control_nutri !== '') {
-            console.log(nuevoRegistroMedico);
-          }
+        //   if (nuevoRegistroMedico.fecha_control_medico !== '' || nuevoRegistroMedico.fecha_control_medico_abrev !== '' || nuevoRegistroMedico.fecha_control_enf !== '' || nuevoRegistroMedico.fecha_control_nutri !== '') {
+        //     console.log(nuevoRegistroMedico);
+        //   }
 
 
-        });
+        // });
 
         console.log("Antes de llamar al servicio Registro", this.contador);
 
         this.pacienteService.agregarPaciente(nuevoPaciente).subscribe(
           (response) => {
             console.log('Paciente agregado correctamente:', response);
+
+            rangeData6.forEach((row: any, rowIndex: number) => {
+
+              // Inicializa el registro medico
+              let nuevoRegistroMedico: RegistroMedico = {
+                nombre_archivo                : '',
+                paciente_id                   : 0,
+                rut                           : '',
+                fecha_control_medico          : '',
+                fecha_control_medico_abrev    : '',
+                fecha_control_enf             : '',
+                fecha_control_nutri           : '',
+                protocolo_hearts              : '',
+                edad                          : '',
+                peso                          : '',
+                talla                         : '',
+                imc                           : '',
+                dg_nutricional                : '',
+                cc                            : '',
+                presion_sistolica             : '',
+                presion_diastolica            : '',
+                fc                            : '',
+                sedentarismo                  : '',
+                tabaquismo                    : '',
+                amputacion_pie_diabetico      : '',
+                iam                           : '',
+                acv                           : '',
+                fecha_examen_lab              : '',
+                glicemia                      : '',
+                col_total                     : '',
+                trigli                        : '',
+                hdl                           : '',
+                ldl                           : '',
+                fecha_crea                    : '',
+                crea                          : '',
+                vfg                           : '',
+                fecha_microalb_rac            : '',
+                micro_alb                     : '',
+                rac                           : '',
+                fecha_hba1c                   : '',
+                valor_hba1c                   : '',
+                fecha_ptgo                    : '',
+                ptgo_ayunas                   : '',
+                ptgo_post_carga               : '',
+                fecha_tsh                     : '',
+                valor_tsh                     : '',
+                fecha_ekg                     : '',
+                fecha_pie_diabetico           : '',
+                resultado_pie_diabetico       : '',
+                fecha_podologia               : '',
+                fecha_f_ojo                   : '',
+                resultado_fo                  : '',
+                aas                           : '',
+                atv                           : '',
+                ieca_ara2                     : '',
+                insulina                      : '',
+                erc                           : '',
+                riesgo_cardiovascular         : '',
+                fecha_rx_cadera               : '',
+                fecha_rx_rodilla              : '',
+                nombre_medico                 : '',
+                nombre_enfermera              : '',
+                nombre_nutricionista          : '',
+                prox_control_medico           : '',
+                prox_control_medico_abreviado : '',
+                prox_control_enf              : '',
+                prox_control_nutri            : '',
+                observaciones                 : ''
+
+              }
+
+              // Llena el registro medico
+              row.forEach((cellValue: any, columnIndex: number) => {
+                if (rowIndex !== 0) {
+
+                  switch(columnIndex) {
+                    case 0:
+                      nuevoRegistroMedico.fecha_control_medico = cellValue;
+                      break;
+
+                    case 1:
+                      nuevoRegistroMedico.fecha_control_medico_abrev = cellValue;
+                      break;
+                    case 2:
+                      nuevoRegistroMedico.fecha_control_enf = cellValue;
+                      break;
+                    case 3:
+                      nuevoRegistroMedico.fecha_control_nutri = cellValue;
+                      break;
+                    case 4:
+                      nuevoRegistroMedico.protocolo_hearts = cellValue;
+                      break;
+                    case 5:
+                      nuevoRegistroMedico.edad = cellValue;
+                      break;
+                    case 6:
+                      nuevoRegistroMedico.peso = cellValue;
+                      break;
+                    case 7:
+                      nuevoRegistroMedico.talla = cellValue;
+                      break;
+                    case 8:
+                      nuevoRegistroMedico.imc = cellValue;
+                      break;
+                    case 9:
+                      nuevoRegistroMedico.dg_nutricional = cellValue;
+                      break;
+                    case 10:
+                      nuevoRegistroMedico.cc = cellValue;
+                      break;
+                    case 11:
+                      nuevoRegistroMedico.presion_sistolica = cellValue;
+                      break;
+                    case 12:
+                      nuevoRegistroMedico.presion_diastolica = cellValue;
+                      break;
+                    case 13:
+                      nuevoRegistroMedico.fc = cellValue;
+                      break;
+                    case 14:
+                      nuevoRegistroMedico.sedentarismo = cellValue;
+                      break;
+                    case 15:
+                      nuevoRegistroMedico.tabaquismo = cellValue;
+                      break;
+                    case 16:
+                      nuevoRegistroMedico.amputacion_pie_diabetico = cellValue;
+                      break;
+                    case 17:
+                      nuevoRegistroMedico.iam = cellValue;
+                      break;
+                    case 18:
+                      nuevoRegistroMedico.acv = cellValue;
+                      break;
+                    case 19:
+                      nuevoRegistroMedico.fecha_examen_lab = cellValue;
+                      break;
+                    case 20:
+                      nuevoRegistroMedico.glicemia = cellValue;
+                      break;
+                    case 21:
+                      nuevoRegistroMedico.col_total = cellValue;
+                      break;
+                    case 22:
+                      nuevoRegistroMedico.trigli = cellValue;
+                      break;
+                    case 23:
+                      nuevoRegistroMedico.hdl = cellValue;
+                      break;
+                    case 24:
+                      nuevoRegistroMedico.ldl = cellValue;
+                      break;
+                    case 25:
+                      nuevoRegistroMedico.fecha_crea = cellValue;
+                      break;
+                    case 26:
+                      nuevoRegistroMedico.crea = cellValue;
+                      break;
+                    case 27:
+                      nuevoRegistroMedico.vfg = cellValue;
+                      break;
+                    case 28:
+                      nuevoRegistroMedico.fecha_microalb_rac = cellValue;
+                      break;
+                    case 29:
+                      nuevoRegistroMedico.micro_alb = cellValue;
+                      break;
+                    case 30:
+                      nuevoRegistroMedico.rac = cellValue;
+                      break;
+                    case 31:
+                      nuevoRegistroMedico.fecha_hba1c = cellValue;
+                      break;
+                    case 32:
+                      nuevoRegistroMedico.valor_hba1c = cellValue;
+                      break;
+                    case 33:
+                      nuevoRegistroMedico.fecha_ptgo = cellValue;
+                      break;
+                    case 34:
+                      nuevoRegistroMedico.ptgo_ayunas = cellValue;
+                      break;
+                    case 35:
+                      nuevoRegistroMedico.ptgo_post_carga = cellValue;
+                      break;
+                    case 36:
+                      nuevoRegistroMedico.fecha_tsh = cellValue;
+                      break;
+                    case 37:
+                      nuevoRegistroMedico.valor_tsh = cellValue;
+                      break;
+                    case 38:
+                      nuevoRegistroMedico.fecha_ekg = cellValue;
+                      break;
+                    case 39:
+                      nuevoRegistroMedico.fecha_pie_diabetico = cellValue;
+                      break;
+                    case 40:
+                      nuevoRegistroMedico.resultado_pie_diabetico = cellValue;
+                      break;
+                    case 41:
+                      nuevoRegistroMedico.fecha_podologia = cellValue;
+                      break;
+                    case 42:
+                      nuevoRegistroMedico.fecha_f_ojo = cellValue;
+                      break;
+                    case 43:
+                      nuevoRegistroMedico.resultado_fo = cellValue;
+                      break;
+                    case 44:
+                      nuevoRegistroMedico.aas = cellValue;
+                      break;
+                    case 45:
+                      nuevoRegistroMedico.atv = cellValue;
+                      break;
+                    case 46:
+                      nuevoRegistroMedico.ieca_ara2 = cellValue;
+                      break;
+                    case 47:
+                      nuevoRegistroMedico.insulina = cellValue;
+                      break;
+                    case 48:
+                      nuevoRegistroMedico.erc = cellValue;
+                      break;
+                    case 49:
+                      nuevoRegistroMedico.riesgo_cardiovascular = cellValue;
+                      break;
+                    case 50:
+                      nuevoRegistroMedico.fecha_rx_cadera = cellValue;
+                      break;
+                    case 51:
+                      nuevoRegistroMedico.fecha_rx_rodilla = cellValue;
+                      break;
+                    case 52:
+                      nuevoRegistroMedico.nombre_medico = cellValue;
+                      break;
+                    case 53:
+                      nuevoRegistroMedico.nombre_enfermera = cellValue;
+                      break;
+                    case 54:
+                      nuevoRegistroMedico.nombre_nutricionista = cellValue;
+                      break;
+                    case 55:
+                      nuevoRegistroMedico.prox_control_medico = cellValue;
+                      break;
+                    case 56:
+                      nuevoRegistroMedico.prox_control_medico_abreviado = cellValue;
+                      break;
+                    case 57:
+                      nuevoRegistroMedico.prox_control_enf = cellValue;
+                      break;
+                    case 58:
+                      nuevoRegistroMedico.prox_control_nutri = cellValue;
+                      break;
+                    case 59:
+                      nuevoRegistroMedico.observaciones = cellValue;
+                      break;
+                  }
+
+                  // console.log(`Valor en la fila ${rowIndex}, columna ${columnIndex}: ${cellValue}`);
+
+                }
+              });
+
+              nuevoRegistroMedico.nombre_archivo = response.data.nombre_archivo;
+              nuevoRegistroMedico.paciente_id    = response.data.id;
+              nuevoRegistroMedico.rut            = response.data.rut;
+
+              // Si se cumple la condición graba el registro medico
+              if (nuevoRegistroMedico.fecha_control_medico !== '' ||
+                  nuevoRegistroMedico.fecha_control_medico_abrev !== '' ||
+                  nuevoRegistroMedico.fecha_control_enf !== '' ||
+                  nuevoRegistroMedico.fecha_control_nutri !== '') {
+
+                console.log(nuevoRegistroMedico);
+
+                this.procesarRegistroMedico(nuevoRegistroMedico);
+
+              }
+
+            });
+
             this.isProcessing = false;
             this.processNextFile();
           },
@@ -528,6 +808,13 @@ export class AppComponent {
     }
 
     // console.log(this.datosPacientes)
+
+  }
+
+  async procesarRegistroMedico(nuevoRegistroMedico: RegistroMedico) {
+
+    const response2 = await this.pacienteService.agregarRegistrosMedicos(nuevoRegistroMedico).toPromise();
+    console.log('Registro Médico agregado correctamente:', response2);
 
   }
 

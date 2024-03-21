@@ -1,5 +1,7 @@
 export interface RegistroMedico {
-
+  nombre_archivo                : string
+  paciente_id                   : number
+  rut                           : string
   fecha_control_medico          : string
   fecha_control_medico_abrev    : string
   fecha_control_enf             : string

@@ -23,7 +23,7 @@ export class PacienteService {
   }
 
   agregarRegistrosMedicos(datosRegistroMedico: any):Observable<any> {
-    return this.http.post(`${this.baseUrl}api/pacientes`, datosRegistroMedico);
+    return this.http.post(`${this.baseUrl}api/registrosmedicos`, datosRegistroMedico);
   }
 
 
