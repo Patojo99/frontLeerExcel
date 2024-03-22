@@ -53,7 +53,7 @@ export class AppComponent {
         const worksheet = workbook.Sheets[firstSheetName];
 
         const range1 = { s: { c: 12, r: 4 }, e: { c: 14, r: 10 } }; // Rango M5:O11
-        const rangeData1 = XLSX.utils.sheet_to_json(worksheet, { range: range1, header: 1 });
+        const rangeData1 = XLSX.utils.sheet_to_json(worksheet, { range: range1, header: 1, defval: '' });
 
 
         const range2 = { s: { c: 10, r: 2 }, e: { c: 12, r: 3 } }; // Rango K3:M4
@@ -111,29 +111,29 @@ export class AppComponent {
         // console.log("Valores de rangeData1:");
         rangeData1.forEach((row: any, rowIndex: number) => {
           row.forEach((cellValue: any, columnIndex: number) => {
-            // console.log(`Valor en la fila ${rowIndex}, columna ${columnIndex}: ${cellValue}`);
+            // console.log(`Posición: ${correlativo} Valor en la fila ${rowIndex}, columna ${columnIndex}: ${cellValue}`);
 
             // Dependiendo del índice de la columna, asignar el valor correspondiente a la variable nuevoPaciente
             switch (correlativo) {
-              case 2: // Si correlativo es 2, asignar el valor a la propiedad 'hta'
+              case 3: // Si correlativo es 2, asignar el valor a la propiedad 'hta'
                 nuevoPaciente.hta = cellValue;
                 break;
-              case 4: // Si correlativo es 4, asignar el valor a la propiedad 'dm2'
+              case 6: // Si correlativo es 4, asignar el valor a la propiedad 'dm2'
                 nuevoPaciente.dm2 = cellValue;
                 break;
-              case 6: // Si correlativo es 6, asignar el valor a la propiedad 'dlp'
+              case 9: // Si correlativo es 6, asignar el valor a la propiedad 'dlp'
                 nuevoPaciente.dlp = cellValue;
                 break;
-              case 8: // Si correlativo es 8, asignar el valor a la propiedad 'hipot'
+              case 12: // Si correlativo es 8, asignar el valor a la propiedad 'hipot'
                 nuevoPaciente.hipot = cellValue;
                 break;
-              case 10: // Si correlativo es 10, asignar el valor a la propiedad 'artrosis'
+              case 15: // Si correlativo es 10, asignar el valor a la propiedad 'artrosis'
                 nuevoPaciente.artrosis = cellValue;
                 break;
-              case 12: // Si correlativo es 12, asignar el valor a la propiedad 'epilepsia'
+              case 18: // Si correlativo es 12, asignar el valor a la propiedad 'epilepsia'
                 nuevoPaciente.epilepsia = cellValue;
                 break;
-              case 14: // Si correlativo es 14, asignar el valor a la propiedad 'otra'
+              case 21: // Si correlativo es 14, asignar el valor a la propiedad 'otra'
                 nuevoPaciente.otra = cellValue;
                 break;
 
@@ -238,7 +238,6 @@ export class AppComponent {
           });
         });
 
-        console.log("Antes de llamar al servicio Registro", this.contador);
 
         this.pacienteService.agregarPaciente(nuevoPaciente).subscribe(
           (response) => {
@@ -614,6 +613,8 @@ export class AppComponent {
             this.processNextFile();
           }
         );
+
+        console.log(`Registro: ${this.contador} Grabado`);
 
         this.contador++;
 
