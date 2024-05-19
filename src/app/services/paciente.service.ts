@@ -15,6 +15,11 @@ export class PacienteService {
   constructor( private http: HttpClient ) { }
 
 
+  obtenerPacientes():Observable<any>{
+    return this.http.get(`${this.baseUrl}api/pacientes`);
+  }
+
+
   agregarPaciente( datosPaciente: Paciente ):Observable<any>{
 
     // console.log(datosPaciente, 'desde el servicio');

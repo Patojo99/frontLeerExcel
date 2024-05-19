@@ -1,4 +1,5 @@
 export interface RegistroMedico {
+  id?                           : number
   nombre_archivo                : string
   paciente_id                   : number
   rut                           : string

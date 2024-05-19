@@ -1,6 +1,7 @@
 import { Timestamp } from "rxjs"
 
 export interface Paciente {
+  id?               : number
   nombre_archivo    : string
   sector            : number
   nombre            : string
@@ -12,13 +13,13 @@ export interface Paciente {
   telefono          : string
   fecha_nacimiento  : string
   fecha_ingreso     : string
-  hta               : string
-  dm2               : string
-  dlp               : string
-  hipot             : string
-  artrosis          : string
-  epilepsia         : string
+  hta               : boolean
+  dm2               : boolean
+  dlp               : boolean
+  hipot             : boolean
+  artrosis          : boolean
+  epilepsia         : boolean
   otra              : string
-  poblacion_migrante: string
-  pueblo_originario : string
+  poblacion_migrante: boolean
+  pueblo_originario : boolean
 }

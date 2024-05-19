@@ -1,4 +1,8 @@
-<div>
+<div >
     <input type="file" multiple (change)="onFileChange($event)">
-    <button (click)="handleFiles()">Cargar Excel</button>
+    <button type="button" class="btn btn-primary" (click)="handleFiles()">Cargar Excel</button>
 </div>
+
+<hr class="dropdown-divider">
+
+<app-exportar2></app-exportar2>

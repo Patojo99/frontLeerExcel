@@ -2,14 +2,20 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import * as XLSX from 'xlsx';
 import { PacienteService } from "../app/services/paciente.service";
+import { PacienteService2 } from "../app/services/paciente2.service";
 import { Paciente } from "../app/interfaces/paciente";
 import { RegistroMedico } from './interfaces/registromedico';
+import { Paciente2 } from './interfaces/paciente2';
+import { firstValueFrom } from 'rxjs';
+import { async } from 'rxjs/internal/scheduler/async'; // Add this import statement
+import { ExportarComponent } from './components/exportar/exportar.component';
+import { Exportar2Component } from './components/exportar2/exportar2.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ExportarComponent, Exportar2Component],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -21,7 +27,9 @@ export class AppComponent {
   isProcessing = false;
   contador: number = 1;
 
-  constructor( private pacienteService: PacienteService) { }
+  constructor( private pacienteService: PacienteService,
+                private pacienteService2: PacienteService2
+   ) { }
 
   onFileChange(event: any) {
     this.files = event.target.files;
@@ -95,15 +103,15 @@ export class AppComponent {
           telefono          : '',
           fecha_nacimiento  : '',
           fecha_ingreso     : '',
-          hta               : '',
-          dm2               : '',
-          dlp               : '',
-          hipot             : '',
-          artrosis          : '',
-          epilepsia         : '',
+          hta               : false,
+          dm2               : false,
+          dlp               : false,
+          hipot             : false,
+          artrosis          : false,
+          epilepsia         : false,
           otra              : '',
-          poblacion_migrante: '',
-          pueblo_originario : ''
+          poblacion_migrante: false,
+          pueblo_originario : false,
         };
 
         let correlativo = 1
@@ -116,22 +124,40 @@ export class AppComponent {
             // Dependiendo del índice de la columna, asignar el valor correspondiente a la variable nuevoPaciente
             switch (correlativo) {
               case 3: // Si correlativo es 2, asignar el valor a la propiedad 'hta'
-                nuevoPaciente.hta = cellValue;
+                // nuevoPaciente.hta = cellValue;
+                if (cellValue.toUpperCase() == 'SI') {
+                  nuevoPaciente.hta = true;
+                }
                 break;
               case 6: // Si correlativo es 4, asignar el valor a la propiedad 'dm2'
-                nuevoPaciente.dm2 = cellValue;
+                // nuevoPaciente.dm2 = cellValue;
+                if (cellValue.toUpperCase() == 'SI') {
+                  nuevoPaciente.dm2 = true;
+                }
                 break;
               case 9: // Si correlativo es 6, asignar el valor a la propiedad 'dlp'
-                nuevoPaciente.dlp = cellValue;
+                // nuevoPaciente.dlp = cellValue;
+                if (cellValue.toUpperCase() == 'SI') {
+                  nuevoPaciente.dlp = true;
+                }
                 break;
               case 12: // Si correlativo es 8, asignar el valor a la propiedad 'hipot'
-                nuevoPaciente.hipot = cellValue;
+                // nuevoPaciente.hipot = cellValue;
+                if (cellValue.toUpperCase() == 'SI') {
+                  nuevoPaciente.hipot = true;
+                }
                 break;
               case 15: // Si correlativo es 10, asignar el valor a la propiedad 'artrosis'
-                nuevoPaciente.artrosis = cellValue;
+                // nuevoPaciente.artrosis = cellValue;
+                if (cellValue.toUpperCase() == 'SI') {
+                  nuevoPaciente.artrosis = true;
+                }
                 break;
               case 18: // Si correlativo es 12, asignar el valor a la propiedad 'epilepsia'
-                nuevoPaciente.epilepsia = cellValue;
+                // nuevoPaciente.epilepsia = cellValue;
+                if (cellValue.toUpperCase() == 'SI') {
+                  nuevoPaciente.epilepsia = true;
+                }
                 break;
               case 21: // Si correlativo es 14, asignar el valor a la propiedad 'otra'
                 nuevoPaciente.otra = cellValue;
@@ -151,10 +177,16 @@ export class AppComponent {
             // Dependiendo del índice de la columna, asignar el valor correspondiente a la variable nuevoPaciente
             switch (correlativo) {
               case 2: // Si correlativo es 2, asignar el valor a la propiedad 'poblacion_migrante'
-                nuevoPaciente.poblacion_migrante = cellValue;
+                // nuevoPaciente.poblacion_migrante = cellValue;
+                if (cellValue.toUpperCase() == 'SI') {
+                  nuevoPaciente.poblacion_migrante = true;
+                }
                 break;
               case 4: // Si correlativo es 4, asignar el valor a la propiedad 'pueblo_originario'
-                nuevoPaciente.pueblo_originario = cellValue;
+                // nuevoPaciente.pueblo_originario = cellValue;
+                if (cellValue.toUpperCase() == 'SI') {
+                  nuevoPaciente.pueblo_originario = true;
+                }
                 break;
             }
             correlativo ++;
@@ -242,6 +274,30 @@ export class AppComponent {
         this.pacienteService.agregarPaciente(nuevoPaciente).subscribe(
           (response) => {
             // console.log('Paciente agregado correctamente:', response);
+
+            // let fechaIngreso: Date | null = null;
+            // if (nuevoPaciente.fecha_ingreso !== null && nuevoPaciente.fecha_ingreso !=='') {
+            //  fechaIngreso = new Date(nuevoPaciente.fecha_ingreso);
+            // }
+
+            // console.log('Fecha de Ingreso:', fechaIngreso);
+
+
+            // let nuevoPaciente2: Paciente2 = {
+            //   sector          : nuevoPaciente.sector,
+            //   rut             : nuevoPaciente.rut,
+            //   sexo            : nuevoPaciente.sexo,
+            //   nombre          : nuevoPaciente.nombre,
+            //   apellido_p      : nuevoPaciente.apellido_paterno,
+            //   apellido_m      : nuevoPaciente.apellido_materno,
+            //   direccion       : nuevoPaciente.direccion,
+            //   fono            : nuevoPaciente.telefono,
+            //   fecha_nacimiento: new Date(nuevoPaciente.fecha_nacimiento), // Convert string to Date object
+            //   fecha_ingreso   : fechaIngreso
+            // }
+
+            // this.grabarPaciente2(nuevoPaciente2);
+            //this.miMetodo(nuevoPaciente2);
 
             rangeData6.forEach((row: any, rowIndex: number) => {
 
@@ -637,3 +693,4 @@ export class AppComponent {
   }
 
 }
+
