@@ -78,6 +78,8 @@ export class AppComponent {
 
         const range6 = { s: { c: 0, r: 11 }, e: { c: 59, r: 160 } }; // Rango A12:BH161
         const rangeData6 = XLSX.utils.sheet_to_json(worksheet, { range: range6, header: 1, defval: '' });
+        // const paso = XLSX.utils.sheet_to_json(worksheet, { range: range6, header: 1, defval: '' });
+
 
 
 
@@ -299,6 +301,8 @@ export class AppComponent {
             // this.grabarPaciente2(nuevoPaciente2);
             //this.miMetodo(nuevoPaciente2);
 
+            // const rangeData6 = paso.reverse();
+
             rangeData6.forEach((row: any, rowIndex: number) => {
 
               // Inicializa el registro medico
@@ -320,11 +324,11 @@ export class AppComponent {
                 presion_sistolica             : '',
                 presion_diastolica            : '',
                 fc                            : '',
-                sedentarismo                  : '',
-                tabaquismo                    : '',
-                amputacion_pie_diabetico      : '',
-                iam                           : '',
-                acv                           : '',
+                sedentarismo                  : false,
+                tabaquismo                    : false,
+                amputacion_pie_diabetico      : false,
+                iam                           : false,
+                acv                           : false,
                 fecha_examen_lab              : '',
                 glicemia                      : '',
                 col_total                     : '',
@@ -350,10 +354,10 @@ export class AppComponent {
                 fecha_podologia               : '',
                 fecha_f_ojo                   : '',
                 resultado_fo                  : '',
-                aas                           : '',
-                atv                           : '',
-                ieca_ara2                     : '',
-                insulina                      : '',
+                aas                           : false,
+                atv                           : false,
+                ieca_ara2                     : false,
+                insulina                      : false,
                 erc                           : '',
                 riesgo_cardiovascular         : '',
                 fecha_rx_cadera               : '',
@@ -371,6 +375,7 @@ export class AppComponent {
 
               // Llena el registro medico
               row.forEach((cellValue: any, columnIndex: number) => {
+                // Se salta la primera fila, la de las cabeceras
                 if (rowIndex !== 0) {
 
                   switch(columnIndex) {
@@ -434,19 +439,29 @@ export class AppComponent {
                       nuevoRegistroMedico.fc = cellValue;
                       break;
                     case 14:
-                      nuevoRegistroMedico.sedentarismo = cellValue;
+                      if (cellValue.toUpperCase() == 'SI') {
+                        nuevoRegistroMedico.sedentarismo = true;
+                      }
                       break;
                     case 15:
-                      nuevoRegistroMedico.tabaquismo = cellValue;
+                      if (cellValue.toUpperCase() == 'SI') {
+                        nuevoRegistroMedico.tabaquismo = true;
+                      }
                       break;
                     case 16:
-                      nuevoRegistroMedico.amputacion_pie_diabetico = cellValue;
+                      if (cellValue.toUpperCase() == 'SI') {
+                        nuevoRegistroMedico.amputacion_pie_diabetico = true;
+                      }
                       break;
                     case 17:
-                      nuevoRegistroMedico.iam = cellValue;
+                      if (cellValue.toUpperCase() == 'SI') {
+                        nuevoRegistroMedico.iam = true;
+                      }
                       break;
                     case 18:
-                      nuevoRegistroMedico.acv = cellValue;
+                      if (cellValue.toUpperCase() == 'SI') {
+                        nuevoRegistroMedico.acv = true;
+                      }
                       break;
                     case 19:
                       if (cellValue !== '') {
@@ -564,16 +579,24 @@ export class AppComponent {
                       nuevoRegistroMedico.resultado_fo = cellValue;
                       break;
                     case 44:
-                      nuevoRegistroMedico.aas = cellValue;
+                      if (cellValue.toUpperCase() == 'SI') {
+                        nuevoRegistroMedico.aas = true;
+                      }
                       break;
                     case 45:
-                      nuevoRegistroMedico.atv = cellValue;
+                      if (cellValue.toUpperCase() == 'SI') {
+                        nuevoRegistroMedico.atv = true;
+                      }
                       break;
                     case 46:
-                      nuevoRegistroMedico.ieca_ara2 = cellValue;
+                      if (cellValue.toUpperCase() == 'SI') {
+                        nuevoRegistroMedico.ieca_ara2 = true;
+                      }
                       break;
                     case 47:
-                      nuevoRegistroMedico.insulina = cellValue;
+                      if (cellValue.toUpperCase() == 'SI') {
+                        nuevoRegistroMedico.insulina = true;
+                      }
                       break;
                     case 48:
                       nuevoRegistroMedico.erc = cellValue;

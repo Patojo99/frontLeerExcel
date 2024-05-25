@@ -17,11 +17,11 @@ export interface RegistroMedico {
   presion_sistolica             : string
   presion_diastolica            : string
   fc                            : string
-  sedentarismo                  : string
-  tabaquismo                    : string
-  amputacion_pie_diabetico      : string
-  iam                           : string
-  acv                           : string
+  sedentarismo                  : boolean
+  tabaquismo                    : boolean
+  amputacion_pie_diabetico      : boolean
+  iam                           : boolean
+  acv                           : boolean
   fecha_examen_lab              : string
   glicemia                      : string
   col_total                     : string
@@ -47,10 +47,10 @@ export interface RegistroMedico {
   fecha_podologia               : string
   fecha_f_ojo                   : string
   resultado_fo                  : string
-  aas                           : string
-  atv                           : string
-  ieca_ara2                     : string
-  insulina                      : string
+  aas                           : boolean
+  atv                           : boolean
+  ieca_ara2                     : boolean
+  insulina                      : boolean
   erc                           : string
   riesgo_cardiovascular         : string
   fecha_rx_cadera               : string

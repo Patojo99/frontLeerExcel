@@ -29,7 +29,7 @@ export class Exportar2Component {
       this.pacientes = data.data;
       this.message = data.message;
 
-      console.log(data)
+      // console.log(data)
     });
   }
 
