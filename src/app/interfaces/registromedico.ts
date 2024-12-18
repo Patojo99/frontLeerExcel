@@ -51,7 +51,7 @@ export interface RegistroMedico {
   atv                           : boolean
   ieca_ara2                     : boolean
   insulina                      : boolean
-  erc                           : string
+  erc                           : boolean
   riesgo_cardiovascular         : string
   fecha_rx_cadera               : string
   fecha_rx_rodilla              : string

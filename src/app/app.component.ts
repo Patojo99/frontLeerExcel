@@ -127,37 +127,37 @@ export class AppComponent {
             switch (correlativo) {
               case 3: // Si correlativo es 2, asignar el valor a la propiedad 'hta'
                 // nuevoPaciente.hta = cellValue;
-                if (cellValue.toUpperCase() == 'SI') {
+                if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                   nuevoPaciente.hta = true;
                 }
                 break;
               case 6: // Si correlativo es 4, asignar el valor a la propiedad 'dm2'
                 // nuevoPaciente.dm2 = cellValue;
-                if (cellValue.toUpperCase() == 'SI') {
+                if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                   nuevoPaciente.dm2 = true;
                 }
                 break;
               case 9: // Si correlativo es 6, asignar el valor a la propiedad 'dlp'
                 // nuevoPaciente.dlp = cellValue;
-                if (cellValue.toUpperCase() == 'SI') {
+                if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                   nuevoPaciente.dlp = true;
                 }
                 break;
               case 12: // Si correlativo es 8, asignar el valor a la propiedad 'hipot'
                 // nuevoPaciente.hipot = cellValue;
-                if (cellValue.toUpperCase() == 'SI') {
+                if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                   nuevoPaciente.hipot = true;
                 }
                 break;
               case 15: // Si correlativo es 10, asignar el valor a la propiedad 'artrosis'
                 // nuevoPaciente.artrosis = cellValue;
-                if (cellValue.toUpperCase() == 'SI') {
+                if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                   nuevoPaciente.artrosis = true;
                 }
                 break;
               case 18: // Si correlativo es 12, asignar el valor a la propiedad 'epilepsia'
                 // nuevoPaciente.epilepsia = cellValue;
-                if (cellValue.toUpperCase() == 'SI') {
+                if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                   nuevoPaciente.epilepsia = true;
                 }
                 break;
@@ -180,13 +180,13 @@ export class AppComponent {
             switch (correlativo) {
               case 2: // Si correlativo es 2, asignar el valor a la propiedad 'poblacion_migrante'
                 // nuevoPaciente.poblacion_migrante = cellValue;
-                if (cellValue.toUpperCase() == 'SI') {
+                if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                   nuevoPaciente.poblacion_migrante = true;
                 }
                 break;
               case 4: // Si correlativo es 4, asignar el valor a la propiedad 'pueblo_originario'
                 // nuevoPaciente.pueblo_originario = cellValue;
-                if (cellValue.toUpperCase() == 'SI') {
+                if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                   nuevoPaciente.pueblo_originario = true;
                 }
                 break;
@@ -358,7 +358,7 @@ export class AppComponent {
                 atv                           : false,
                 ieca_ara2                     : false,
                 insulina                      : false,
-                erc                           : '',
+                erc                           : false,
                 riesgo_cardiovascular         : '',
                 fecha_rx_cadera               : '',
                 fecha_rx_rodilla              : '',
@@ -439,27 +439,27 @@ export class AppComponent {
                       nuevoRegistroMedico.fc = cellValue;
                       break;
                     case 14:
-                      if (cellValue.toUpperCase() == 'SI') {
+                      if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                         nuevoRegistroMedico.sedentarismo = true;
                       }
                       break;
                     case 15:
-                      if (cellValue.toUpperCase() == 'SI') {
+                      if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                         nuevoRegistroMedico.tabaquismo = true;
                       }
                       break;
                     case 16:
-                      if (cellValue.toUpperCase() == 'SI') {
+                      if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                         nuevoRegistroMedico.amputacion_pie_diabetico = true;
                       }
                       break;
                     case 17:
-                      if (cellValue.toUpperCase() == 'SI') {
+                      if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                         nuevoRegistroMedico.iam = true;
                       }
                       break;
                     case 18:
-                      if (cellValue.toUpperCase() == 'SI') {
+                      if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                         nuevoRegistroMedico.acv = true;
                       }
                       break;
@@ -579,27 +579,29 @@ export class AppComponent {
                       nuevoRegistroMedico.resultado_fo = cellValue;
                       break;
                     case 44:
-                      if (cellValue.toUpperCase() == 'SI') {
+                      if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                         nuevoRegistroMedico.aas = true;
                       }
                       break;
                     case 45:
-                      if (cellValue.toUpperCase() == 'SI') {
+                      if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                         nuevoRegistroMedico.atv = true;
                       }
                       break;
                     case 46:
-                      if (cellValue.toUpperCase() == 'SI') {
+                      if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                         nuevoRegistroMedico.ieca_ara2 = true;
                       }
                       break;
                     case 47:
-                      if (cellValue.toUpperCase() == 'SI') {
+                      if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
                         nuevoRegistroMedico.insulina = true;
                       }
                       break;
                     case 48:
-                      nuevoRegistroMedico.erc = cellValue;
+                      if (typeof cellValue === 'string' && cellValue.toUpperCase() == 'SI') {
+                        nuevoRegistroMedico.erc = true;
+                      }
                       break;
                     case 49:
                       nuevoRegistroMedico.riesgo_cardiovascular = cellValue;
@@ -629,17 +631,16 @@ export class AppComponent {
                       break;
                     case 55:
                       if (cellValue !== '') {
+                        // console.log('prox_control_medico',cellValue);
                         let fecha16 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
                         nuevoRegistroMedico.prox_control_medico = fecha16.toLocaleDateString();
                       }
-                      // nuevoRegistroMedico.prox_control_medico = cellValue;
                       break;
                     case 56:
                       if (cellValue !== '') {
                         let fecha17 = new Date((cellValue - 1) * 24 * 60 * 60 * 1000 + (new Date("1900-01-01")).getTime());
                         nuevoRegistroMedico.prox_control_medico_abreviado = fecha17.toLocaleDateString();
                       }
-                      // nuevoRegistroMedico.prox_control_medico_abreviado = cellValue;
                       break;
                     case 57:
                       if (cellValue !== '') {
